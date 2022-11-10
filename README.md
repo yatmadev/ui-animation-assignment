@@ -11,5 +11,6 @@ npm i
 npm start
 ```
 
-Login with # 9999999999
-OTP 123456
+Login with # **9999999999**
+
+OTP **123456**
