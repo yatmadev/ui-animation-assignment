@@ -11,6 +11,8 @@ import {
   View,
 } from "react-native";
 import styles from "./styles";
+import * as Animatable from 'react-native-animatable';
+import { SlideInDown } from "react-native-reanimated";
 
 export const Home = () => {
   return (
@@ -20,8 +22,8 @@ export const Home = () => {
         backgroundColor="blue"
         style={Platform.OS === "android" ? "light" : "dark"}
       />
-      <View style={styles.Circle}></View>
-      <View style={styles.Header}>
+      <Animatable.View duration={2000} animation="fadeInDownBig" style={styles.Circle}></Animatable.View>
+      <Animatable.View duration={2000} animation="fadeInDownBig" style={styles.Header}>
         <View style={styles.HeaderTitle}>
           <Text style={styles.HeaderText}>
             Welcome To <Text style={{ fontWeight: "bold" }}>BigHit</Text>
@@ -33,7 +35,7 @@ export const Home = () => {
             Create Profile
           </Text>
         </View>
-      </View>
+      </Animatable.View>
       <ScrollView
         style={styles.Banner}
         horizontal
@@ -56,7 +58,7 @@ export const Home = () => {
           return <CategoryItem key={currentElement} />;
         })}
       </ScrollView>
-      <View style={styles.Leaderboard}>
+      <Animatable.View duration={2000} animation="fadeInUpBig" style={styles.Leaderboard}>
         <View style={styles.LeaderBoardTitle}>
           <FontAwesome name="star" size={18} color="orange" />
           <Text style={styles.LeaderBoardText}>
@@ -72,14 +74,14 @@ export const Home = () => {
           style={styles.LeaderBoardFlatlist}
           contentContainerStyle={{ alignItems: "center" }}
         />
-      </View>
+      </Animatable.View>
     </View>
   );
 };
 
 const BannerItem = () => {
   return (
-    <View style={styles.BannerContainer}>
+    <Animatable.View duration={2000} animation="fadeInDownBig" style={styles.BannerContainer}>
       <Image
         source={require("../../assets/images/banner.png")}
         style={styles.BannerImage}
@@ -94,13 +96,13 @@ const BannerItem = () => {
         </View>
       </TouchableWithoutFeedback>
       <View style={styles.BannerScroller}></View>
-    </View>
+    </Animatable.View>
   );
 };
 
 const CategoryItem = () => {
   return (
-    <View style={styles.CategoryContainer}>
+    <Animatable.View duration={2000} animation="fadeInUpBig" style={styles.CategoryContainer}>
       <Image
         source={require("../../assets/images/categories.png")}
         style={styles.CategoryImage}
@@ -109,7 +111,7 @@ const CategoryItem = () => {
       <View style={styles.CategoryTextContainer}>
         <Text style={styles.CategoryText}>Categories</Text>
       </View>
-    </View>
+    </Animatable.View>
   );
 };
 

@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Login, OTP } from "../../screens";
+import { Login, OTP, LoginSuccess } from "../../screens";
 
 const Stack = createStackNavigator();
 
@@ -13,6 +13,7 @@ export function AuthStack() {
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="OTP" component={OTP} />
+      <Stack.Screen name="LoginSuccess" component={LoginSuccess} />
     </Stack.Navigator>
   );
 }

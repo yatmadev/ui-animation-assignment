@@ -84,7 +84,7 @@ export class OTP extends Component {
   };
 
   onFormSubmit = () => {
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
     const otpLength = (
       Object.values(this.state.otp).reduce(
         (accumulator: string, currentElement) =>
@@ -110,15 +110,19 @@ export class OTP extends Component {
 
     setTimeout(() => {
       this.setState({ isLoading: false });
-      useAuthStore.setState({ isAuthenticated: true });
-    }, 1500);
+      // useAuthStore.setState({ isAuthenticated: true });
+      this.props.navigation.navigate('LoginSuccess')
+      
+    }, 2000);
   };
 
   render() {
     return (
+      
       <AuthLayout
         headerHeight={styles.Header.height}
         headerText={
+          this.state.isLoading === false ?
           <View style={styles.Header}>
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>
               Enter 6 digit OTP sent on
@@ -143,10 +147,13 @@ export class OTP extends Component {
                 </BlueLink>
               </TouchableWithoutFeedback>
             </View>
-          </View>
+          </View>:null
+                
         }
       >
         <FullScreenLoader isLoading={this.state.isLoading} />
+        
+        { this.state.isLoading === false ?
         <View style={styles.Form}>
           <View style={styles.InputContainer}>
             <View style={[styles.Inputs]}>
@@ -192,6 +199,8 @@ export class OTP extends Component {
             )}
           </View>
         </View>
+        :null
+  }
       </AuthLayout>
     );
   }
